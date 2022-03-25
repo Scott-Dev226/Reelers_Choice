@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="zoneStyle2.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
+    integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"
+    integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ=="
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+     const createGraph = function () {
+
+
+      alert(Stock_Symbol_5)
+
+      const today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth() + 1;
+      let yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+
+      const todaysDate = yyyy + "-" + mm + "-" + dd;
+
+
+
+      const SPFetchURL =
+       "https://api.twelvedata.com/time_series?symbol=" +
+      "IXIC" +
+      "&interval=1week&start_date=2020-1-10&end_date=" +
+      todaysDate +
+      "&apikey=f12c3d6e34d241178fae0bd392e18b07";
+
+
+      fetch(SPFetchURL)
+        .then(function (resp) {
+          return resp.json();
+        }) // Convert data to json
+        .then(function (data) {
+          let SPCascadeClose = [];
+          let SPCascadeDate = [];
+
+          let i;
+          for (i = 30; i >= 0; i--) {
+            SPCascadeClose.push(data.values[i].close);
+            SPCascadeDate.push(data.values[i].datetime);
+
+          }
+
+        var ctx2 = document.getElementById("SPChart").getContext("2d");
+
+        /*
+        if (isDarkMode) {
+          Chart.defaults.global.defaultFontColor = "white";
+        } else if (!isDarkMode) {
+          Chart.defaults.global.defaultFontColor = "black";
+        }
+
+        */
+
+        Chart.defaults.global.defaultFontFamily = "Arial Narrow";
+
+        var SPChart = new Chart(ctx2, {
+          type: "line",
+          data: {
+            labels: SPCascadeDate,
+            datasets: [
+              {
+                label: "NASDAQ",
+                data: SPCascadeClose,
+                fill: true,
+                borderColor: ["red"],
+                backgroundColor: ["rgb(252, 233, 231)"],
+                borderWidth: 3,
+                fontColor: "red",
+              },
+            ],
+          },
+          options: {
+            legend: {
+              labels: {
+                fontColor: "black",
+                fontSize: 17,
+              },
+            },
+            title: {
+              fontColor: "black",
+              display: true,
+              text:
+                "CURRENT VALUE" + " $" + data.values[0].close + "    (USD/$)",
+            },
+            responsive: false,
+            maintainAspectRatio: false,
+
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: false,
+                    fontColor: "black",
+                    fontSize: 14,
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  ticks: {
+                    beginAtZero: false,
+                    fontColor: "black",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      });
+     }
+
+
+  </script>
+
+  <div id="navholder">
+
+    <nav id="Nav-Bar">
+      <ul id="Nav-List">
+        <li id="site-logo">
+          <p>BlueStar Post</p>
+        </li>
+
+        <li><a href="#" class="Nav-Slide">Home</a></li>
+        <li><a href="#" class="Nav-Slide">Member List</a>
+          <ul>
+            <li id="Member-List" onclick="testFunction(0)">FUCVK!!!!</li>
+            <li id="Member-List" onclick="testFunction(1)">Paul Hurley</li>
+            <li id="Member-List" onclick="testFunction(2)">Kevin Scott</li>
+
+          </ul>
+        </li>
+        <li><a href=# class="Nav-Slide">ZoneRed Info</p></a></li>
+
+      </ul>
+    </nav>
+  </div>
+
+  <div id="main-container">
+
+
+
+
+
+
+    <div id="stock_Info_Div">
+
+  
+
+        </div>
+
+
+      </div>
+
+      <div id="form-and-chart-container">
+
+        <div id="chartHolder" class="chart-fade">
+          <canvas id="SPChart"></canvas>
+        </div>
+
+
+        <div id="form-container">
+          <form action="suggestion.php" method="GET" id="formMatrix">
+
+
+            <h3> Suggest a Stock</h3>
+            <br><br>
+            Your First Name and/or Alias: <input id="form-input" type="text" name="first-name"><br>
+            Stock/Company Name (ex. Tesla Inc): <input id="form-input" type="text" name="stock-name"><br><br>
+            <p>Stock Index: </p>
+            <input id="form-input2" type="radio" value="NYSE" name="stock-index">
+            <label for="form-input2">NYSE</label><br>
+            <input id="form-input3" type="radio" value="NASDAQ" name="stock-index">
+            <label for="form-input3">NASDAQ</label><br>
+            Stock Symbol (ex. AMZN): <input id="form-input" type="text" name="stock-symbol"><br>
+            Add Comments and/or Links to Relevant Articles: <input id="form-input" type="text" name="comments"><br>
+            <input type="submit" `>
+          </form>
+
+
+        </div>
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+</body>
+
+</html>
