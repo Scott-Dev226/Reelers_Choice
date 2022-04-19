@@ -20,6 +20,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
 
 .index_body {
   height: 100%;
@@ -30,7 +33,9 @@
 }
 
 .api_info {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
 }
 
 #reaction_line {
@@ -38,10 +43,10 @@
 }
 
 p {
-  background-color: black;
   vertical-align: top;
-  margin: 0;
-  padding: 0;
+
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .signup_body {
@@ -57,11 +62,16 @@ p {
   align-items: center;
   align-content: center;
   background-color: black;
+
+  background-image: url("pexels-guillaume-meurice-592594.jpg");
 }
 
 .login_body {
   background-color: black;
-  opacity: 0;
+  background-repeat: no-repeat;
+  transition: all 1s ease-in;
+  background-image: url("pexels-ricardo-ortiz-6447218.jpg");
+  background-size: cover;
 }
 
 .main-signup_site-container {
@@ -75,10 +85,10 @@ p {
 }
 
 .echo-style {
-  font-size: 1.35rem;
+  font-size: 0.85rem;
   font-family: "Antonio", sans-serif;
-  color: white;
-  font-size: 2rem;
+  color: rgb(214, 103, 39);
+
   z-index: 1000;
   position: relative;
   background-color: black;
@@ -86,8 +96,9 @@ p {
 
 .signup-header {
   color: white;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: "Gowun Dodum", sans-serif;
+  margin-top: 0px;
 }
 
 .signup-form-holder {
@@ -101,10 +112,10 @@ p {
   justify-content: center;
   border-radius: 15%;
   background-color: rgb(17, 17, 17);
-
+  font-family: "Roboto Condensed", sans-serif;
   text-align: center;
   position: relative;
-
+  opacity: 0.85;
   background-size: contain;
   margin-bottom: 250px;
 }
@@ -117,6 +128,8 @@ p {
   align-content: center;
   position: relative;
   z-index: 1000;
+  opacity: 0.95;
+  transition: all 1s ease-in;
 }
 
 #carousel-btn:hover {
@@ -130,7 +143,7 @@ p {
 
 #carousel-btn {
   background-color: rgb(1, 41, 6);
-  margin-top: 30px;
+  margin-top: 60px;
   width: 60px;
   height: 30px;
   border-radius: 0px 50px 50px 0px;
@@ -157,14 +170,22 @@ p {
 }
 
 .sign_field {
-  width: 190px;
+  width: 160px;
   margin-bottom: 5px;
-  font-size: 0.85rem;
-  margin-left: 15%;
+  margin-left: 25%;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 2px solid white;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .login_field {
+  width: 160px;
   margin-bottom: 5px;
+  border-radius: 5px;
+  border: 2px solid white;
+  font-size: 0.9rem;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .login-form-form {
@@ -175,21 +196,21 @@ p {
   background-size: contain;
   display: flex;
   flex-direction: column;
-
+  border: 0.25px solid rgb(148, 194, 255);
   justify-content: center;
   align-items: center;
   text-align: center;
   align-content: center;
   border-radius: 15%;
   background-color: rgb(17, 17, 17);
-  opacity: 90%;
+  opacity: 1;
   margin-bottom: 300px;
 }
 
 .my_registerform {
   color: white;
   opacity: 92%;
-  font-family: "Antonio", sans-serif;
+
   margin-top: 10px;
   width: 150px;
 }
@@ -199,6 +220,14 @@ p {
   margin-left: 85px;
   margin-top: 5px;
   margin-bottom: 30px;
+  border-radius: 15%;
+  color: white;
+  background-color: rgb(7, 74, 161);
+  transition: all 0.5s ease;
+}
+.signup-submit-btn:hover {
+  background-color: rgb(2, 85, 2);
+  transition: all 0.5s ease;
 }
 
 .login-submit-btn {
@@ -206,6 +235,15 @@ p {
   margin-left: 95px;
   margin-top: 15px;
   margin-bottom: 30px;
+  border-radius: 15%;
+  color: white;
+  background-color: rgb(7, 74, 161);
+  transition: all 0.5s ease;
+}
+
+.login-submit-btn:hover {
+  background-color: rgb(2, 85, 2);
+  transition: all 0.5s ease;
 }
 
 .buttonHolder {
@@ -234,6 +272,13 @@ p {
   top: 0;
 }
 #site-logo {
+  font-size: 1.25rem;
+  margin-right: 5px;
+  color: rgb(208, 240, 255);
+  font-family: "Poiret One", cursive;
+}
+
+#login-logo {
   font-size: 1rem;
   margin-right: 5px;
   color: rgb(208, 240, 255);
@@ -442,11 +487,12 @@ span {
 }
 
 .movie_poster:hover {
-  border: 3px solid red;
+  border: 1px solid rgb(95, 150, 167);
   cursor: pointer;
   transition-property: all;
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
+  opacity: 0.6;
 }
 
 #search_holder {

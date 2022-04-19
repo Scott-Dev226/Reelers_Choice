@@ -1,17 +1,4 @@
-function msieversion() {
-  var ua = window.navigator.userAgent;
-  var msie = ua.indexOf("MSIE ");
-
-  if (msie > 0) {
-    // If Internet Explorer, return version number
-    alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
-  } // If another browser, return 0
-  else {
-    alert("otherbrowser");
-  }
-
-  return false;
-}
+const fetchOption = "api_cloak.php";
 
 const close_modal = () => {
   let modal = document.getElementById("myModal");
@@ -31,11 +18,9 @@ const get_movie_trailer = (movie_ID) => {
   let movie_trailer_key;
   let trailer_url;
   let trailer_lead_url =
-    "https://api.themoviedb.org/3/movie/" +
-    movie_ID +
-    "/videos?api_key=fccbfa7c189f50d5650077f65b125c2d";
+    "https://api.themoviedb.org/3/movie/" + movie_ID + "/videos?api_key=";
 
-  fetch(trailer_lead_url)
+  fetch(fetchOption, { method: "POST", body: trailer_lead_url })
     .then(function (resp) {
       return resp.json();
     }) // Convert data to json
@@ -51,11 +36,9 @@ const get_movie_cast = (movie_ID) => {
   let cast_members = [];
 
   let cast_url =
-    "https://api.themoviedb.org/3/movie/" +
-    movie_ID +
-    "/credits?api_key=fccbfa7c189f50d5650077f65b125c2d";
+    "https://api.themoviedb.org/3/movie/" + movie_ID + "/credits?api_key=";
 
-  fetch(cast_url)
+  fetch(fetchOption, { method: "POST", body: cast_url })
     .then(function (resp) {
       return resp.json();
     }) // Convert data to json
@@ -76,27 +59,28 @@ const getMovieData = (genre_selected) => {
   gsap.to(".cd_spin", { duration: 5, rotation: y });
   const user_keywords = document.getElementById("search").value;
   const search_url =
-    "https://api.themoviedb.org/3/search/movie?api_key=fccbfa7c189f50d5650077f65b125c2d&region=US&query=" +
-    user_keywords;
+    "https://api.themoviedb.org/3/search/movie?&region=US&query=" +
+    user_keywords +
+    "&api_key=";
 
   let movieFetchURL;
 
   const search_str = document.getElementById("search").value.toString();
   if (genre_selected == null) {
     movieFetchURL =
-      "https://api.themoviedb.org/3/discover/movie?primary_release_year=2021&sort_by=popularity.desc&region=US&include_video=true&include_adult=false&api_key=fccbfa7c189f50d5650077f65b125c2d";
+      "https://api.themoviedb.org/3/discover/movie?primary_release_year=2022&sort_by=popularity.desc&region=US&include_video=true&include_adult=false&api_key=";
   } else {
     movieFetchURL =
       "https://api.themoviedb.org/3/discover/movie?with_genres=" +
       genre_selected +
-      "&region=US&sort_by=popularity.desc&include_video=true&api_key=fccbfa7c189f50d5650077f65b125c2d";
+      "&region=US&sort_by=popularity.desc&include_video=true&api_key=";
   }
 
   if (search_str.length !== 0) {
     movieFetchURL = search_url;
   }
 
-  fetch(movieFetchURL)
+  fetch(fetchOption, { method: "POST", body: movieFetchURL })
     .then(function (resp) {
       return resp.json();
     }) // Convert data to json
@@ -261,7 +245,6 @@ const initialPull = () => {
     cache: false,
     success: function (data) {
       let jsonData = JSON.parse(data);
-      console.log(jsonData);
 
       const setRating = (reaction) => {
         let string = "&#11088;";
@@ -276,8 +259,6 @@ const initialPull = () => {
       for (let i = jsonData.length - 1; i > jsonData.length - 6; i--) {
         if (newIndex <= 5) {
           newIndex = newIndex + 1;
-
-          console.log("userID" + newIndex.toString());
 
           document.getElementById("userID" + newIndex.toString()).innerHTML =
             jsonData[i].user_UID;

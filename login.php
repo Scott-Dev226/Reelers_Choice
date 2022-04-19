@@ -21,13 +21,13 @@ session_start();
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Reeler's Choice</title>
     <script> 
   
-  window.onload = function(){
-    	 gsap.to(".login_body", { duration: 5, opacity: 1 });
-
-	}
+  window.onload = function(){    
+    
+       gsap.from(".login-form-form", { duration: 1, opacity: 0, delay: 0.5, x: 50 });      
+   	}
   
   
   
@@ -39,31 +39,38 @@ session_start();
 
 
 
-  <video autoplay muted playsinline loop id ="vid_bkgrd">
-  <source src="Pixabay_Curtains - 320.mp4" type="video/mp4">
-</video>
+
 
 
 
 <section class = "login-form-holder">
 
 <div class = "login-form-form">
+       
+            <h2 id="login-logo">Reeler's Choice</h2>
+         
   <h2 class = "signup-header">Sign in </h2>
 
 <form action="login_logic.php" method="post">
+  <input class = "login_field" type="text" name="uid" placeholder="Username...">
+  <input class = "login_field" type="password" name="pwd" placeholder="Password...">
+  <p style = "color:green; font-weight:bold" class = "api_info1">FOR QUICK LOGIN ~</p>
+  <p style = "color:white" class = "api_info">Username: "Guest101"</p>
+  <p style = "color:white" class = "api_info">Password: "pass"</p>
+  <button type="submit" name="submit" class = "login-submit-btn"> Log In </button>
+  <a href= "sign_up.php" class = "api_info"> Need to go back to Create a username? Click here!"</a>
 
-<input class = "login_field" type="text" name="uid" placeholder="Username...">
-<input class = "login_field" type="password" name="pwd" placeholder="Password...">
 
 
-<button type="submit" name="submit" class = "login-submit-btn"> Log In </button>
-
-
-<a href= "sign_up.php"> Need to go back to Create a username? Click here!"</a>
-
+  
 </form>
+
+
+
+
+
  <img id = "api_logo" src = "tmdb.svg">
-<p style = "color:white">This product uses the TMDb API but is not endorsed or certified by TMDb</p>
+<p style = "color:white" class = "api_info">This product uses the TMDb API but is not endorsed or certified by TMDb</p>
 </div>
 
 <?php

@@ -21,7 +21,7 @@ session_start();
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Reeler's Choice</title>
 
 
   <script> 
@@ -38,9 +38,7 @@ session_start();
 </head>
 <body class = "signup_body">
 
-  <video autoplay muted playsinline loop id="vid_bkgrd">
-  <source src="Pixabay_Film - 54605.mp4" type="video/mp4">
-</video>
+
 <div class = "main-signup_site-container">
 
 
@@ -67,14 +65,44 @@ session_start();
 
 
 
-
-
-
     
   <div class="buttonHolder">
-    <button type="submit" name="submit" class = "signup-submit-btn"> Sign Up </button>
-   
+    <button type="submit" name="submit" class = "signup-submit-btn"> Sign Up </button>   
   </div>
+
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1); 
+
+if (isset($_GET["error"])) {
+  if ($_GET["error"] == "emptyinput") {
+    echo "<p class = 'echo-style'> Error - Please Fill in All Fields</p>";
+  }
+
+   else if ($_GET["error"] == "invaliduid") {
+    echo "<p class = 'echo-style'>Error - Please Choose a Proper Username</p>";
+  }
+
+     else if ($_GET["error"] == "usernametaken") {
+    echo "<p class = 'echo-style'> Error - The selected Username has already been taken! Please try another</p>";
+  }
+
+     else if ($_GET["error"] == "invalidemail") {
+ echo "<p class = 'echo-style'> Error- Please Choose a Proper Email</p>";
+  }
+
+    else if ($_GET["error"] == "passwordsdontmatch") {
+  echo "<p class = 'echo-style'> Error - Passwords entered do not match</p>";
+  }
+
+   else if ($_GET["error"] == "stmt failed") {
+    echo "<p class = 'echo-style'>Error - Something went wrong, please try again</p>";
+  }
+
+}
+?>
+
 
 </form>
 
@@ -88,38 +116,6 @@ session_start();
 
 
 
-<?php
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1); 
-
-if (isset($_GET["error"])) {
-  if ($_GET["error"] == "emptyinput") {
-    echo "<p class = 'echo-style'> Please Fill in All Fields</p>";
-  }
-
-   else if ($_GET["error"] == "invaliduid") {
-    echo "<p class = 'echo-style'> Please Choose a Proper Username</p>";
-  }
-
-     else if ($_GET["error"] == "usernametaken") {
-    echo "<p class = 'echo-style'> The selected Username has already been taken! Please try another</p>";
-  }
-
-     else if ($_GET["error"] == "invalidemail") {
- echo "<p class = 'echo-style'> Please Choose a Proper Email</p>";
-  }
-
-    else if ($_GET["error"] == "passwordsdontmatch") {
-  echo "<p class = 'echo-style'> Passwords entered do not match</p>";
-  }
-
-   else if ($_GET["error"] == "stmt failed") {
-    echo "<p class = 'echo-style'> Something went wrong, please try again</p>";
-  }
-
-}
-?>
 
 
 </section>

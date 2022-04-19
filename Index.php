@@ -49,7 +49,7 @@ if (!isset($_SESSION["user_UID"])) {
          var userZip = "<?php echo "$jackpotZip" ?>"
          getMovieData();
          initialPull();
-
+        
 
       }
     </script>
