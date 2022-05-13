@@ -38,6 +38,40 @@
   font-family: "Roboto", sans-serif;
 }
 
+.api_info1 {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.login_info {
+  font-size: 0.9rem;
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+.login_info_span {
+  font-size: 0.95rem;
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: rgb(109, 80, 224);
+  margin: 0;
+  padding: 0;
+}
+
+.signup_link_txt {
+  font-size: 0.85rem;
+  margin-bottom: 0px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.signup_link_txt:hover {
+  color: rgb(255, 98, 0);
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+
 #reaction_line {
   display: flex;
 }
@@ -110,6 +144,9 @@ p {
   flex-direction: column;
   opacity: 0.85;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-content: center;
   border-radius: 15%;
   background-color: rgb(17, 17, 17);
   font-family: "Roboto Condensed", sans-serif;
@@ -172,7 +209,7 @@ p {
 .sign_field {
   width: 160px;
   margin-bottom: 5px;
-  margin-left: 25%;
+
   font-size: 0.9rem;
   border-radius: 5px;
   border: 2px solid white;
@@ -203,7 +240,7 @@ p {
   align-content: center;
   border-radius: 15%;
   background-color: rgb(17, 17, 17);
-  opacity: 1;
+  opacity: 0;
   margin-bottom: 300px;
 }
 
@@ -216,8 +253,6 @@ p {
 }
 
 .signup-submit-btn {
-  display: block;
-  margin-left: 85px;
   margin-top: 5px;
   margin-bottom: 30px;
   border-radius: 15%;
@@ -1122,7 +1157,7 @@ nav ul li a:hover {
 
   .sign_field {
     font-size: 0.75rem;
-    margin-left: 15%;
+
     margin-bottom: 2px;
   }
 
